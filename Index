@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Maison JCL | The Experience</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Maison JCL is the luxe digital universe of Judith C.L. Morris – portfolio, boutiques, art, glitter therapy pages, signature fonts, and virtual office experiences." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #F7F5EF;          /* Ivory */
+      --espresso: #2B1E14;   /* Deep espresso text */
+      --black: #000000;
+      --camel: #C5A98A;      /* Soft neutral */
+      --citrine: #D9B748;    /* Pop color */
+      --gold-soft: #C7A065;
+      --card-bg: #FBF9F4;
+      --muted: #7F6D5D;
+      --border-soft: #E2D7C6;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #FBF9F4 0%, var(--bg) 40%, #F0E6D7 100%);
+      color: var(--espresso);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top bar */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(247, 245, 239, 0.9);
+      border-bottom: 1px solid rgba(199, 160, 101, 0.18);
+    }
+
+    .top-bar-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-title {
+      font-family: "Playfair Display", serif;
+      font-size: 1.2rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--espresso);
+    }
+
+    .brand-subtitle {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+    }
+
+    .top-nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .top-nav a {
+      position: relative;
+      padding-bottom: 2px;
+      color: var(--espresso);
+    }
+
+    .top-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: linear-gradient(90deg, var(--citrine), var(--gold-soft));
+      transition: width 0.2s ease-out;
+    }
+
+    .top-nav a:hover::after,
+    .top-nav a:focus-visible::after {
+      width: 100%;
+    }
+
+    .top-nav-cta {
+      border-radius: 999px;
+      padding: 8px 14px;
+      border: 1px solid rgba(217, 183, 72, 0.7);
+      background: linear-gradient(135deg, rgba(217, 183, 72, 0.13), rgba(255, 255, 255, 0.4));
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .top-nav-cta span.dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--citrine);
+      box-shadow: 0 0 0 4px rgba(217, 183, 72, 0.25);
+    }
+
+    /* Hero */
+    .hero {
+      max-width: 1120px;
+      margin: 40px auto 32px;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    @media (max-width: 840px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        margin-top: 24px;
+      }
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .hero-label-line {
+      width: 46px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--citrine), transparent);
+    }
+
+    .hero-title {
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      font-size: clamp(2.3rem, 3vw, 3rem);
+      line-height: 1.2;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .hero-title span.emphasis {
+      background: linear-gradient(120deg, var(--citrine), var(--gold-soft));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      max-width: 480px;
+      font-size: 0.98rem;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .btn-primary {
+      border-radius: 999px;
+      padding: 11px 22px;
+      background: linear-gradient(135deg, var(--citrine), var(--gold-soft));
+      border: none;
+      color: var(--black);
+      font-size: 0.85rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+    }
+
+    .btn-primary span.icon {
+      font-size: 1.1rem;
+      transform: translateY(1px);
+    }
+
+    .btn-secondary {
+      border-radius: 999px;
+      padding: 10px 18px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(171, 150, 115, 0.7);
+      color: var(--espresso);
+      font-size: 0.83rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .hero-note {
+      font-size: 0.8rem;
+      color: var(--muted);
+      max-width: 420px;
+    }
+
+    .hero-right {
+      position: relative;
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top left, rgba(217, 183, 72, 0.16), rgba(251, 249, 244, 0.96));
+      border-radius: 18px;
+      padding: 20px 18px;
+      border: 1px solid rgba(199, 160, 101, 0.35);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 0.76rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--espresso);
+    }
+
+    .hero-card-pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      background: rgba(255, 255, 255, 0.6);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    .hero-card-title {
+      font-family: "Playfair Display", serif;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 6px;
+    }
+
+    .hero-card-text {
+      font-size: 0.8rem;
+      color: var(--espresso);
+      opacity: 0.9;
+      margin-bottom: 12px;
+    }
+
+    .hero-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 0.73rem;
+    }
+
+    .hero-card-tag {
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(247, 245, 239, 0.95);
+      border: 1px solid rgba(226, 215, 198, 0.9);
+      color: var(--muted);
+    }
+
+    .hero-orbit {
+      position: absolute;
+      inset: -40px;
+      pointer-events: none;
+      opacity: 0.65;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(217, 183, 72, 0.28), transparent 56%),
+        radial-gradient(circle at 70% 90%, rgba(0, 0, 0, 0.08), transparent 55%);
+      mix-blend-mode: soft-light;
+    }
+
+    .hero-spark {
+      position: absolute;
+      top: -14px;
+      right: -12px;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      border: 1px solid rgba(217, 183, 72, 0.7);
+      box-shadow:
+        0 0 0 5px rgba(217, 183, 72, 0.18),
+        0 18px 38px rgba(0, 0, 0, 0.25);
+      background: radial-gradient(circle at 30% 20%, #fff, #f5eddc);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      text-align: center;
+      padding: 10px;
+    }
+
+    @media (max-width: 840px) {
+      .hero-right {
+        order: -1;
+      }
+      .hero {
+        gap: 26px;
+      }
+    }
+
+    /* Experience Map */
+    .experience {
+      max-width: 1120px;
+      margin: 10px auto 40px;
+      padding: 0 20px 40px;
+    }
+
+    .experience-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .experience-title {
+      font-family: "Playfair Display", serif;
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .experience-subtitle {
+      max-width: 420px;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+    }
+
+    .experience-card {
+      position: relative;
+      background: linear-gradient(145deg, var(--card-bg), #FDFBF7);
+      border-radius: 16px;
+      border: 1px solid var(--border-soft);
+      padding: 15px 14px 16px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: transform 0.18s ease-out, box-shadow 0.18s ease-out, border-color 0.18s ease-out;
+    }
+
+    .experience-card::before {
+      content: "";
+      position: absolute;
+      inset: -30%;
+      background: radial-gradient(circle at top left, rgba(217, 183, 72, 0.14), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.2s ease-out;
+      pointer-events: none;
+    }
+
+    .experience-card:hover,
+    .experience-card:focus-within {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.12);
+      border-color: rgba(199, 160, 101, 0.8);
+    }
+
+    .experience-card:hover::before,
+    .experience-card:focus-within::before {
+      opacity: 1;
+    }
+
+    .experience-pill {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .experience-pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--citrine);
+      box-shadow: 0 0 0 4px rgba(217, 183, 72, 0.22);
+    }
+
+    .experience-name {
+      font-family: "Playfair Display", serif;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--espresso);
+    }
+
+    .experience-tagline {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .experience-link-row {
+      margin-top: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.76rem;
+    }
+
+    .experience-link {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.74rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .experience-link-icon {
+      font-size: 0.9rem;
+      transform: translateY(1px);
+    }
+
+    .experience-meta {
+      font-size: 0.72rem;
+      color: rgba(127, 109, 93, 0.9);
+    }
+
+    .experience-strip {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: rgba(43, 30, 20, 0.7);
+      text-align: center;
+      padding: 15px 20px;
+      border-top: 1px solid rgba(224, 210, 193, 0.9);
+      background: linear-gradient(90deg, rgba(217, 183, 72, 0.07), rgba(247, 245, 239, 0.9), rgba(217, 183, 72, 0.05));
+    }
+
+    .experience-strip span {
+      color: var(--espresso);
+    }
+
+    /* Footer */
+    .footer {
+      padding: 16px 20px 26px;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .footer strong {
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 600px) {
+      .top-nav {
+        display: none;
+      }
+      .hero-subtitle {
+        font-size: 0.9rem;
+      }
+      .experience-title {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- Top Bar -->
+    <header class="top-bar">
+      <div class="top-bar-inner">
+        <div class="brand">
+          <div class="brand-title">MAISON JCL</div>
+          <div class="brand-subtitle">LUXE DIGITAL UNIVERSE</div>
+        </div>
+        <nav class="top-nav">
+          <a href="#experience-map">Experience</a>
+          <a href="#portals">Portals</a>
+          <!-- You said you’ll add Reach Out yourself; link this to your section when ready -->
+          <a href="#reach-out" class="top-nav-cta">
+            <span class="dot"></span>
+            Reach Out
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <main>
+      <section class="hero" aria-label="Maison JCL intro">
+        <div>
+          <div class="hero-label">
+            <span class="hero-label-line"></span>
+            <span>Welcome to the Universe</span>
+          </div>
+          <h1 class="hero-title">
+            The <span class="emphasis">Maison JCL</span> Experience Hub
+          </h1>
+          <p class="hero-subtitle">
+            One doorway into everything: portfolio, boutiques, art, glitter therapy, signature fonts,
+            and your virtual office. Choose your path and step into the luxe side of my world.
+          </p>
+
+          <div class="hero-cta-row">
+            <a href="#experience-map" class="btn-primary">
+              Enter the Experience
+              <span class="icon">↠</span>
+            </a>
+            <a href="#portals" class="btn-secondary">
+              Browse All Portals
+            </a>
+          </div>
+          <p class="hero-note">
+            This is an interactive map of my work, stories, and shops. Bookmark this page as your
+            starting point — every door leads deeper into Maison JCL.
+          </p>
+        </div>
+
+        <div class="hero-right">
+          <article class="hero-card">
+            <div class="hero-orbit"></div>
+            <div class="hero-spark">
+              Curated<br />by JCLM
+            </div>
+            <div class="hero-card-header">
+              <span>Signature View</span>
+              <span class="hero-card-pill">Citrine Luxe</span>
+            </div>
+            <h2 class="hero-card-title">Digital Maison</h2>
+            <p class="hero-card-text">
+              A high-fashion navigation layer that keeps my universe cohesive — whether you’re here
+              for strategy, style, art, or pure inspiration.
+            </p>
+            <div class="hero-card-tags">
+              <span class="hero-card-tag">Creative Direction</span>
+              <span class="hero-card-tag">Multi-Brand Ecosystem</span>
+              <span class="hero-card-tag">Luxury Web Experience</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Experience Map -->
+      <section id="experience-map" class="experience" aria-label="Maison JCL experience map">
+        <div class="experience-header">
+          <h2 class="experience-title">Explore the Maison JCL Universe</h2>
+          <p class="experience-subtitle">
+            Each tile below is a portal into one of my worlds: from Composure Boutique and Vellure
+            Hair, to my art store, glitter therapy pages, fonts, and beyond. Replace the links with
+            your live URLs when you’re ready.
+          </p>
+        </div>
+
+        <div id="portals" class="experience-grid">
+          <!-- Portfolio -->
+          <article class="experience-card">
+            <div class="experience-pill">
+              <span class="experience-pill-dot"></span>
+              Creative Direction
+            </div>
+            <h3 class="experience-name">Portfolio</h3>
+            <p class="experience-tagline">
+              Campaigns, case studies, and visual stories that define my work in CRM, branding, and
+              creative direction.
+            </p>
+            <div class="experience-link-row">
+              <a class="experience-link" href="<!-- TODO: add portfolio URL here -->" target="_blank" rel="noopener">
+                Enter
+                <span class="experience-link-icon">↗</span>
+              </a>
+              <div class="experience-meta">Judith C.L. Morris · Selected Work</div>
+            </div>
+          </article>
+
+          <!-- Blog -->
+          <article class="experience-card">
+            <div class="experience-pill">
+              <span class="experience-pill-dot"></span>
+              Journal
+            </div>
+            <h3 class="experience-name">Blog & Essays</h3>
+            <p class="experience-tagline">
+              Long-form thoughts on luxury, strategy, tech, and the cost of keeping quiet.
+            </p>
+            <div class="experience-link-row">
+              <a class="experience-link" href="<!-- TODO: add blog URL here -->" target="_blank" rel="noopener">
+                Read
+                <span class="experience-link-icon">↗</span>
+              </a>
+              <div class="experience-meta">Narrative · Strategy · Culture</div>
+            </div>
+          </article>
+
+          <!-- Composure Boutique -->
+          <article class="experience-card">
+            <div class="experience-pill">
+              <span class="experience-pill-dot"></span>
+              Boutique
+            </div>
+            <h3 class="experience-name">Composure Boutique</h3>
+            <p class="experience-tagline">
+              Women’s luxe fashion, statement pieces, and curated looks designed to move differently.
+            </p>
+            <div class="experience-link-row">
+              <a class="experience-link" href="https://www.composureboutique.com" target="_blank" rel="noopener">
+                Shop
+                <span class="experience-link-icon">↗</span>
+              </a>
+              <div class="experience-meta">Luxe Drop · Holiday Glam · Everyday Power</div>
+            </div>
+          </article>
+
+          <!-- Vellure Hair -->
+          <article class="experience-card">
+            <div class="experience-pill">
+              <span class="experience-pill-dot"></span>
+              Atelier
+            </div>
+            <h3 class="experience-name">Vellure Hair Atelier</h3>
+            <p class="experience-tagline">
+              Raw luxury extensions and hair experiences styled around confidence, not compromise.
+            </p>
+            <div class="experience-link-row">
+              <a class="experience-link" href="<!-- TODO: add Vellure URL here -->" target="_blank" rel="noopener">
+                Enter Atelier
+                <span class="experience-link-icon">↗</span>
+              </a>
+              <div class="experience-meta">Raw Luxury · Cambodian · Vietnamese</div>
+            </div>
+          </article>
+
+          <!-- Art Store -->
+          <article class="experience-card">
+            <div class="experience-pill">
+              <span class="experience-pill-dot"></span>
+              Art House
+            </div>
+            <h3 class="experience-name">Maison JCL Art Store</h3>
+            <p class="experience-tagline">
+              Digital art, prints, and visual pieces that sit at the edge of therapy, fashion, and story.
+            </p>
+            <div class="experience-link-row">
+              <a class="experience-link" href="<!-- TODO: add Art Store URL here -->" target="_blank" rel="noopener">
+                View Gallery
+                <span class="experience-link-icon">↗</span>
+              </a>
+              <div class="experience-meta">Prints · Canvas · Digital Drops</div>
+            </div>
+          </article>
+
+          <!-- Other Stores -->
+          <article class="experience-card">
+            <div class="experience-pill">
+              <span class="experience-pill-dot"></span>
+              Commerce
+            </div>
+            <h3 class="experience-name">The Other Stores</h3>
+            <p class="experience-tagline">
+              Men’s, kids, home decor, furniture and more — the extended Maison JCL commerce universe.
+            </p>
+            <div class="experience-link-row">
+              <a class="experience-link" href="<!-- TODO: link to a hub or Linktree-style page for all stores -->" target="_blank" rel="noopener">
+                Browse
+                <span class="experience-link-icon">↗</span>
+              </a>
+              <div class="experience-meta">Multi-Store · Curated Collections</div>
+            </div>
+          </article>
+
+          <!-- Glitter Pages -->
+          <article class="experience-card">
+            <div class="experience-pill">
+              <span class="experience-pill-dot"></span>
+              Glitter Therapy
+            </div>
+            <h3 class="experience-name">Glitter Pages</h3>
+            <p class="experience-tagline">
+              Color-rich, affirming pages that function like visual meditations for women who need a soft place to land.
+            </p>
+            <div class="experience-link-row">
+              <a class="experience-link" href="<!-- TODO: add Glitter Therapy URL here -->" target="_blank" rel="noopener">
+                See Pages
+                <span class="experience-link-icon">↗</span>
+              </a>
+              <div class="experience-meta">Gold · Rose · Red · Custom Sets</div>
+            </div>
+          </article>
+
+          <!-- Fonts -->
+          <article class="experience-card">
+            <div class="experience-pill">
+              <span class="experience-pill-dot"></span>
+              Type Studio
+            </div>
+            <h3 class="experience-name">Maison JCL Fonts</h3>
+            <p class="experience-tagline">
+              Signature hand-drawn typefaces and luxe lettering built for brands with something to say.
+            </p>
+            <div class="experience-link-row">
+              <a class="experience-link" href="<!-- TODO: add Fonts page URL here -->" target="_blank" rel="noopener">
+                View Fonts
+                <span class="experience-link-icon">↗</span>
+              </a>
+              <div class="experience-meta">Licensing · Specimens · Use Cases</div>
+            </div>
+          </article>
+
+          <!-- Virtual Office -->
+          <article class="experience-card">
+            <div class="experience-pill">
+              <span class="experience-pill-dot"></span>
+              Virtual Office
+            </div>
+            <h3 class="experience-name">Maison JCL Virtual Office</h3>
+            <p class="experience-tagline">
+              A digital HQ for consultations, VIP strategy sessions, and behind-the-scenes work in progress.
+            </p>
+            <div class="experience-link-row">
+              <a class="experience-link" href="<!-- TODO: add Virtual Office URL here (Notion, Calendly, etc.) -->" target="_blank" rel="noopener">
+                Step Inside
+                <span class="experience-link-icon">↗</span>
+              </a>
+              <div class="experience-meta">Consulting · Calendars · Client Hub</div>
+            </div>
+          </article>
+
+          <!-- Future / Wildcard -->
+          <article class="experience-card">
+            <div class="experience-pill">
+              <span class="experience-pill-dot"></span>
+              Future Channel
+            </div>
+            <h3 class="experience-name">Next Era Projects</h3>
+            <p class="experience-tagline">
+              Space reserved for whatever comes next — broadcasting, new ventures, books, or brand collabs.
+            </p>
+            <div class="experience-link-row">
+              <a class="experience-link" href="<!-- TODO: add future projects URL or placeholder -->" target="_blank" rel="noopener">
+                Coming Soon
+                <span class="experience-link-icon">↗</span>
+              </a>
+              <div class="experience-meta">Evolving · In Progress</div>
+            </div>
+          </article>
+        </div>
+
+        <div class="experience-strip">
+          This page is your <span>central key</span> — one Maison, many doors. Bookmark it, share it, and return whenever you need to step back into the luxe version of your story.
+        </div>
+      </section>
+    </main>
+
+    <!-- You said you'll add the Reach Out section; anchor included for you to fill. -->
+    <section id="reach-out" class="footer" aria-label="Reach out">
+      <!--
+        TODO: Add your Reach Out / Questions section here.
+        You can replace this entire block with your own form, email link, or instructions.
+      -->
+      <p>
+        <strong>MAISON JCL</strong><br/>
+        Central Experience Hub · Designed in citrine luxe for Judith C.L. Morris.
+      </p>
+    </section>
+  </div>
+</body>
+</html>
